@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
+import TodoWeek from "./TodoWeek";
 
 
 function TodoList() {
     const [todos, setTodos] = useState([])
-
+    
     const addTodo = todo =>{
         if(!todo.text || /^\s*$/.test(todo.text)){
             return;
@@ -41,9 +42,10 @@ function TodoList() {
     }
     return (
         <div>
-            <h1>what's the plan for today?</h1>
+            <h1>what's the plan for eat this week?</h1>
             <TodoForm onSubmit={addTodo}/>
-            <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
+            {/* <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/> */}
+            <TodoWeek todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
         </div>
     )
 }
