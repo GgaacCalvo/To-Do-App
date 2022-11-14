@@ -7,7 +7,7 @@ function TodoForm(props) {
     const [inputDay, setInputDay] = useState("")
     useEffect(() =>{
         inputRef.current.focus() // hace que ya te posicione en el input
-    })
+    },[])
 
     const handleChange = (e) => {
         
@@ -25,6 +25,7 @@ function TodoForm(props) {
              text: input,
              day: inputDay
          })
+         props.onValidate()
         setInput('')
         setInputDay('')
     }
@@ -41,10 +42,12 @@ function TodoForm(props) {
             <>
             
             <input type="text" placeholder="add a todo" value={input} name="text" className="todo-input" onChange={handleChange} ref={inputRef}/>
-            <button className="todo-button">Add todo</button> 
+            <button className="todo-button">Add todo</button>
+            <div className="days">
             {days.map((e, index) => 
-                <label><input type="checkbox" key={index} value={e} onClick={checkboxPick}/>{e}</label>
-            ) }
+                <label className="day"><input type="checkbox" key={index} value={e} onClick={checkboxPick}/>{e}</label>
+                ) }
+                </div> 
             </>)}
             
         </form>

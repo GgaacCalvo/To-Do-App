@@ -18,14 +18,16 @@ function TodoWeek({todos, completeTodo, removeTodo, updateTodo}) {
     })
 
     const validate =function() {
+        console.log(todos)
         todos.map((e) => {
             if(e.day == "Lunes"){
-
-             setDayTodo({
+            let esta = dayTodo.lunes.filter((t) => t === e)
+            if(!esta){ 
+            setDayTodo({
                  ...dayTodo,
                  lunes: [...dayTodo.lunes, e] 
              })
-            }
+            }}
             if(e.day == "Martes"){
              setDayTodo({
                  ...dayTodo,
@@ -62,6 +64,7 @@ function TodoWeek({todos, completeTodo, removeTodo, updateTodo}) {
                  domingo: [...dayTodo.domingo, e] 
              })
             }
+            
          }
             )
     }

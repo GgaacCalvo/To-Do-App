@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import {RiCloseCircleLine } from "react-icons/ri"
@@ -11,7 +11,7 @@ function Todo({todos, completeTodo, removeTodo, updateTodo}) {
         id: null,
         value:''
     })
-
+    
     const submitUpdate = value =>{
         updateTodo(edit.id, value)
         setEdit({
@@ -22,7 +22,7 @@ function Todo({todos, completeTodo, removeTodo, updateTodo}) {
     if(edit.id) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />
     }
-    return todos.map((todo, index) =>
+    return todos?.map((todo, index) =>
         <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
             <div key={todo.id} onClick={() => completeTodo(todo.id)}>
                 {todo.text}

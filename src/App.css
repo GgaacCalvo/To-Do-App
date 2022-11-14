@@ -148,3 +148,10 @@
   .titulo-day{
     color:white;
   }
+  .days{
+    color: white;
+    padding: 1%;
+  }
+  .day{
+    padding: 2%;
+  }
